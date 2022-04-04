@@ -10,17 +10,16 @@ import com.amvlabs.rupeeinvest.R
 class MyDialog(private val activity: Activity):AlertDialog(activity) {
 
     private val dialog = AlertDialog.Builder(activity)
+    init {
+        val inflater = activity.layoutInflater
+        dialog.setView(inflater.inflate(R.layout.custome_dialog,null))
+            .setCancelable(false).create()
+    }
 
     fun startLoading(){
-        val inflater = activity.layoutInflater
-        dialog.apply {
-            setView(inflater.inflate(R.layout.custome_dialog,null))
-            setCancelable(false)
-
-        }.create()
-        dialog.show()
+        dialog.create()
     }
-    fun stopLoading(dialog:MyDialog){
-        dialog.hide()
+    fun stopLoading(){
+        dialog.create().hide()
     }
 }

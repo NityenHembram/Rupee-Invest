@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
         bind.createAccountBtn.setOnClickListener{
             startActivity(Intent(this,CreateAccountActivity::class.java))
+            finish()
         }
 
 
@@ -85,18 +86,20 @@ class LoginActivity : AppCompatActivity() {
             TextUtils.isEmpty(e) ->{
                 bind.loginEmailLayout.boxStrokeColor = Color.RED
                 bind.loginEmailLayout.helperText = "Email must not be empty"
+                dialog.stopLoading()
                 return
             }
             TextUtils.isEmpty(p) ->{
                 bind.loginPassLayout.boxStrokeColor = Color.RED
                 bind.loginPassLayout.helperText = "password must not be empty"
+                dialog.stopLoading()
                 return
             }
         }
 
         Log.d(TAG, "login: ")
         auth.signInWithEmailAndPassword(e,p).addOnSuccessListener {
-            dialog.stopLoading(dialog)
+            dialog.stopLoading()
             startActivity(Intent(this,HomeActivity::class.java))
         }.addOnFailureListener{
             Log.d(TAG, "login: $it")
