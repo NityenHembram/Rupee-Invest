@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Rupee Invest</string>
+    <string name="get_started">Get Started</string>
+    <string name="create_account">Create Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="log_in">Log In</string>
+    <string name="login">LOGIN</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="or_login_with">Or Login With</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="firstSlideTxt">Bottoms in the investment world don\'t end with four-year lows; they end with 10- or 15-year lows.</string>
+    <string name="secSlidTxt">With a good perspective on history, we can have a better understanding of the past and present, and thus a clear vision of the future.</string>
+    <string name="thirdSlidTxt">Waiting helps you as an investor and a lot of people just can’t stand to wait. If you didn’t get the deferred-gratification gene, you’ve got to work very hard to overcome that.</string>
+    <string name="forthSlidTxt">We don\'t prognosticate macroeconomic factors, we\'re looking at our companies from a bottom-up perspective on their long-run prospects of returning.</string>
+    <string name="rupee">₹</string>
+    <string name="invest_STR">INVEST</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "188897500182",
+    "project_id": "rupee-invest-2c107",
+    "storage_bucket": "rupee-invest-2c107.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188897500182:android:07be6f5c9fe22a5569a937",
+        "android_client_info": {
+          "package_name": "com.amvlabs.rupeeinvest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188897500182-40h1v27eqvuu5861mi4nuit8m12c8vcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWAL8shYa5zgvBJ8lD9spOJnILMPudPrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188897500182-40h1v27eqvuu5861mi4nuit8m12c8vcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
