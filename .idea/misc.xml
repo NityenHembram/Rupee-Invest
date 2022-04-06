@@ -7,7 +7,7 @@
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/font/.xml" value="0.1" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_create_account.xml" value="0.2" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_demo.xml" value="0.21041666666666667" />
-        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_home.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_home.xml" value="0.152" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_log_in_screen.xml" value="0.21041666666666667" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_main.xml" value="0.10400000000000001" />
@@ -16,8 +16,17 @@
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_welcome.xml" value="0.12" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/containt_main.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/custome_dialog.xml" value="0.152" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_home.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_invest.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_profile.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_wallet_history.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_withdraw.xml" value="0.13289473684210526" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/item.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/item2.xml" value="0.13289473684210526" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/slide_layout.xml" value="0.136" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/menu/bottom_menu.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/menu/menu_toolbar.xml" value="0.13289473684210526" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/menu/menu_toolbar_options.xml" value="0.13289473684210526" />
       </map>
     </option>
   </component>

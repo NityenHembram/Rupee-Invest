@@ -21,4 +21,6 @@
     <string name="forthSlidTxt">We don\'t prognosticate macroeconomic factors, we\'re looking at our companies from a bottom-up perspective on their long-run prospects of returning.</string>
     <string name="rupee">₹</string>
     <string name="invest_STR">INVEST</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

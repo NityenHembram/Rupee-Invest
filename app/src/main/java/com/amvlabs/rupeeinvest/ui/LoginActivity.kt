@@ -41,6 +41,11 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        if(auth.currentUser != null){
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
+        }
+
         bind.createAccountBtn.setOnClickListener{
             startActivity(Intent(this,CreateAccountActivity::class.java))
             finish()
@@ -67,8 +72,8 @@ class LoginActivity : AppCompatActivity() {
 
             }
         }
-        
-        
+
+
         bind.loginBtn.setOnClickListener{
             dialog.startLoading()
             login()
@@ -103,6 +108,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this,HomeActivity::class.java))
         }.addOnFailureListener{
             Log.d(TAG, "login: $it")
+            dialog.stopLoading()
         }
     }
 
