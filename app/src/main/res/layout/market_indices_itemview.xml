@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    android:elevation="15dp"
+    android:layout_margin="5dp"
+    android:layout_width="150dp"
+    android:backgroundTint="@color/white"
+    android:layout_height="130dp">
+    <RelativeLayout
+        android:layout_margin="12dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/marketTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="NIFTY 50"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/shareValueTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/marketTxt"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:textSize="17sp"
+            android:text="17,784.58"/>
+
+        <TextView
+            android:id="@+id/shareGrowthTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shareValueTxt"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:text="+144.85"
+            android:textColor="@color/teal_700" />
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

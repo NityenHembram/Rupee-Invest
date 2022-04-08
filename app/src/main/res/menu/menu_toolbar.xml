@@ -5,10 +5,10 @@
 
 
 
-
     <item android:title="Search"
-
         android:id="@+id/search_icon"
+        android:iconTintMode="add"
+        android:iconTint="@color/black"
         android:icon="@drawable/ic_baseline_search_24"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
