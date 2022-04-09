@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/drawable/background.xml" value="0.1855" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/drawable/ic_baseline_account_balance_24.xml" value="0.177" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/drawable/ic_baseline_account_balance_wallet_24.xml" value="0.177" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/drawable/ic_baseline_card_giftcard_24.xml" value="0.177" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/font/.xml" value="0.1" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_create_account.xml" value="0.2" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/activity_demo.xml" value="0.21041666666666667" />
@@ -19,7 +22,7 @@
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/custome_dialog.xml" value="0.152" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_invest.xml" value="0.13289473684210526" />
-        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_profile.xml" value="0.176" />
+        <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_wallet_history.xml" value="0.13289473684210526" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/fragment_withdraw.xml" value="0.13289473684210526" />
         <entry key="..\:/Users/Nityen-1/AndroidStudioProjects/RupeeInvest/app/src/main/res/layout/item.xml" value="0.13289473684210526" />
