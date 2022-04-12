@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.identity.SignInCredential
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlin.math.log
@@ -30,14 +31,10 @@ private const val TAG = "tag"
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth:FirebaseAuth
-
-    private lateinit var email:TextInputEditText
-    private lateinit var password:TextInputEditText
     private lateinit var dialog:MyDialog
 
     private lateinit var  googleSignClint:GoogleSignInClient
     private lateinit var googleSignInAccount:GoogleSignInAccount
-
 
     private lateinit var bind:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,17 +43,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(bind.root)
 
 
-        email = bind.loginEmail
-        password = bind.loginPass
-
+//        Initialize Dialog
         dialog = MyDialog(this)
 
 
-
+//        Initialize FirebaseAuth
         auth = FirebaseAuth.getInstance()
-
-
-
 
 
         if(auth.currentUser != null){
@@ -73,32 +65,34 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        bind.loginGoogle.setOnClickListener{
-             val signInIntent = googleSignClint.signInIntent
-            startActivityForResult.launch(signInIntent)
-        }
+//        bind.loginGoogle.setOnClickListener{
+//            val signInIntent = googleSignClint.signInIntent
+//            startActivityForResult.launch(signInIntent)
+//        }
 
 
 
-        password.addTextChangedListener{
+        bind.loginPass.addTextChangedListener{
             if(it!!.length <= 7 ){
                 bind.loginPassLayout.boxStrokeColor = Color.RED
                 bind.loginPassLayout.helperText = "Password must contain 8 Characters"
             }else{
                 bind.loginPassLayout.boxStrokeColor = Color.BLACK
-                bind.loginPassLayout.helperText =""
+                bind.loginPassLayout.helperText = ""
             }
         }
 
-        email.addTextChangedListener{
-            if(it!!.endsWith("@gmail.com") || it.endsWith("@hotmail.com") || it.endsWith("@yahoo.com") ){
-                bind.loginEmailLayout.helperText =""
+
+        bind.loginEmail.addTextChangedListener{
+            if(it!!.contains("@") && it.endsWith(".com") || it.length == 10 ){
+                bind.loginEmailLayout.boxStrokeColor = Color.BLACK
+                bind.loginEmailLayout.helperText = ""
             }else{
-                bind.loginEmailLayout.helperText ="Enter a valid Email"
-
-
+                bind.loginEmailLayout.boxStrokeColor = Color.RED
+                bind.loginEmailLayout.helperText = "Enter Valid Email"
             }
         }
+
 
 
         bind.loginBtn.setOnClickListener{
@@ -119,25 +113,24 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private val startActivityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
-        ActivityResultCallback { result ->
-            if(result.resultCode == Activity.RESULT_OK){
-                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                task.addOnSuccessListener {
-                    Log.d(TAG, "success ${it.displayName}: ")
-
-                    startActivity(Intent(this,HomeActivity::class.java))
-                    finish()
-                }.addOnFailureListener{
-                    Log.d(TAG, "googleFail: $it ")
-                }
-            }
-        })
+//    private val startActivityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),
+//        ActivityResultCallback { result ->
+//            if(result.resultCode == Activity.RESULT_OK){
+//                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+//                task.addOnSuccessListener {
+//                    Log.d(TAG, "success ${it.displayName}: ")
+//
+//                    startActivity(Intent(this,HomeActivity::class.java))
+//                    finish()
+//                }.addOnFailureListener{
+//                    Log.d(TAG, "googleFail: $it ")
+//                }
+//            }
+//        })
 
     private fun login() {
-        val e = email.text.toString().trim()
-        val p = password.text.toString().trim()
-        Log.d(TAG, "login: ")
+        val e = bind.loginEmail.text.toString().trim()
+        val p = bind.loginPass.text.toString().trim()
 
         when{
             TextUtils.isEmpty(e) ->{
@@ -148,31 +141,42 @@ class LoginActivity : AppCompatActivity() {
             }
             TextUtils.isEmpty(p) ->{
                 bind.loginPassLayout.boxStrokeColor = Color.RED
-                bind.loginPassLayout.helperText = "password must not be empty"
+                bind.loginPassLayout.helperText = "Password must not be empty"
                 dialog.stopLoading()
                 return
             }
         }
 
-        Log.d(TAG, "login: ")
-        auth.signInWithEmailAndPassword(e,p).addOnSuccessListener {
-            dialog.stopLoading()
-            startActivity(Intent(this,HomeActivity::class.java))
-        }.addOnFailureListener{
-            Log.d(TAG, "login: $it")
-            dialog.stopLoading()
+        if(p.length < 8){
+            bind.loginPassLayout.helperText = "Password should be 8 character"
+        }else{
+            val credential = EmailAuthProvider.getCredential(e, p)
+            auth.signInWithCredential(credential).addOnSuccessListener {
+                dialog.stopLoading()
+                startActivity(Intent(this,HomeActivity::class.java))
+            }.addOnFailureListener{
+               Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                dialog.stopLoading()
+            }
         }
+
+
+
+
     }
+
 
     override fun onStart() {
         super.onStart()
 //        Log.d(TAG, "onStart: $googleSignInAccount")
         if(auth.currentUser != null){
-            Log.d(TAG, "onStart: ${auth.currentUser}")
             startActivity(Intent(this,HomeActivity::class.java))
             finish()
         }
     }
 
-   
+
+
+
+
 }

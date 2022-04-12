@@ -16,13 +16,8 @@ class VerifyActivity : AppCompatActivity() {
     lateinit var verifyBtn:Button
 
     var phone:String = ""
-    lateinit var auth: FirebaseAuth
-    lateinit var credential: PhoneAuthCredential
-    lateinit var getToken:PhoneAuthProvider.ForceResendingToken
-    lateinit var callback:PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-    private var verificationId = ""
-    private var smsCode = ""
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,60 +27,29 @@ class VerifyActivity : AppCompatActivity() {
         phone = intent.getStringExtra("phone").toString()
         val newPhone = "+91$phone"
 
-        initialisation()
+        initialise()
 
 
 
-        callback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-
-            }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-                Log.d(TAG, "onVerificationFailed: $e")
-            }
-
-            override fun onCodeSent(code: String, token: PhoneAuthProvider.ForceResendingToken) {
-                verificationId = code
-                getToken = token
-            }
-
-        }
-        val options = PhoneAuthOptions.newBuilder(auth).apply {
-            setPhoneNumber(newPhone)
-            setTimeout(60L,TimeUnit.SECONDS)
-            setActivity(this@VerifyActivity)
-            setCallbacks(callback)
-        }.build()
 
 
-        PhoneAuthProvider.verifyPhoneNumber(options)
 
-        verifyBtn.setOnClickListener{
-            smsCode = verifyTxt.text.toString()
-            val credential:PhoneAuthCredential = PhoneAuthProvider.getCredential(verificationId,smsCode)
-            linkedPhoneNumber(credential)
 
-        }
+//        PhoneAuthProvider.verifyPhoneNumber(options)
+
+//        verifyBtn.setOnClickListener{
+//            smsCode = verifyTxt.text.toString()
+//            val credential:PhoneAuthCredential = PhoneAuthProvider.getCredential(verificationId,smsCode)
+//            linkedPhoneNumber(credential)
+//
+//        }
 
     }
 
-    private fun linkedPhoneNumber(p0: PhoneAuthCredential) {
-      auth.currentUser?.linkWithCredential(p0)?.addOnSuccessListener {
-          Log.d(TAG, "verifyCode: ${it.additionalUserInfo}")
-      }?.addOnFailureListener{
-          Log.d(TAG, "verifyCode: ${it.toString()}")
-      }
+
+    private fun initialise() {
+//        verifyTxt = findViewById(R.id.verify_edt)
+//        verifyBtn = findViewById(R.id.verify_btn)
+//        auth = FirebaseAuth.getInstance()
     }
-
-    private fun initialisation() {
-        verifyTxt = findViewById(R.id.verify_edt)
-        verifyBtn = findViewById(R.id.verify_btn)
-
-        auth = FirebaseAuth.getInstance()
-    }
-
-
-
-
 }

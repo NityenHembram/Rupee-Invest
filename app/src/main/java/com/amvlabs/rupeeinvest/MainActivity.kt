@@ -21,49 +21,63 @@ import java.util.prefs.AbstractPreferences
 
 
 private var flag = false
+
 class MainActivity : AppCompatActivity() {
-    lateinit var viewPager:ViewPager2
+    private lateinit var viewPager: ViewPager2
 
-    private lateinit var dotsLout:LinearLayout
-    private lateinit var dots:Array<TextView?>
-
-    private lateinit var getStart:Button
+    private var itemList = ArrayList<ViewPagerItem>()
+    private lateinit var dots: Array<TextView?>
 
     private lateinit var sharePreferences: SharedPreferences
+    private lateinit var edit: SharedPreferences.Editor
+
+    private lateinit var bind: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        bind = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bind.root)
+
+        viewPager = findViewById(R.id.viewPager)
 
         sharePreferences = getSharedPreferences("myPreferences", MODE_PRIVATE)
-        val edit = sharePreferences.edit()
+        edit = sharePreferences.edit()
 
-        val retrive = sharePreferences.getBoolean("flag",flag)
 
-        if(retrive == false){
-            flag = true
-            edit.putBoolean("flag",flag)
-            edit.apply()
-        }else{
-            startActivity(Intent(this,LoginActivity::class.java))
+        val retrive = sharePreferences.getBoolean("flag", flag)
+
+        if (retrive) {
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 
 
-        dotsLout = findViewById(R.id.linerLout)
-        viewPager = findViewById(R.id.viewPager)
-        getStart = findViewById(R.id.getStart_btn)
-        var itemList = ArrayList<ViewPagerItem>()
+        var texts = arrayListOf<Int>(
+            R.string.firstSlideTxt,
+            R.string.secSlidTxt,
+            R.string.thirdSlidTxt,
+            R.string.forthSlidTxt
+        )
+        var images = arrayListOf<Int>(R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d)
+        for (i in 0 until texts.size) {
+            itemList.add(ViewPagerItem(getString(texts[i]), getDrawable(images[i])))
+        }
 
-        var texts = arrayListOf<Int>(R.string.firstSlideTxt,R.string.secSlidTxt,R.string.thirdSlidTxt,R.string.forthSlidTxt)
-        var images = arrayListOf<Int>(R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d)
-        for(i in 0 until texts.size){
-            itemList.add(ViewPagerItem(getString(texts[i]),getDrawable(images[i])))
+        settingViewPager()
+
+//        skip button
+        bind.onBoardingSkip.setOnClickListener {
+            skip()
         }
-        getStart.setOnClickListener{
-            startActivity(Intent(this,LoginActivity::class.java))
-            finish()
+
+
+        //getStart Button
+        bind.getStartBtn.setOnClickListener {
+            skip()
         }
+    }
+
+    fun settingViewPager() {
         viewPager.adapter = ViewPagerAdapter(itemList)
         viewPager.getChildAt(0).overScrollMode = View.OVER_SCROLL_ALWAYS
 
@@ -89,22 +103,30 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun addDots(position:Int) {
+    private fun addDots(position: Int) {
         dots = arrayOfNulls<TextView>(4)
-        dotsLout.removeAllViews()
+        bind.linerLout.removeAllViews()
 
-        for(i in dots.indices){
+        for (i in dots.indices) {
             dots[i] = TextView(this)
             dots[i]!!.text = (Html.fromHtml("&#8226;"))
 //            dots[i]!!.text = "b"
             dots[i]?.textSize = 35f
             dots[i]?.setTextColor(Color.BLUE)
-            dotsLout.addView(dots[i])
+            bind.linerLout.addView(dots[i])
         }
-        if(dots.isNotEmpty()){
+        if (dots.isNotEmpty()) {
             dots[position]?.setTextColor(Color.BLACK)
         }
 
+    }
+
+    private fun skip() {
+        flag = true
+        edit.putBoolean("flag", flag)
+        edit.apply()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
 }
