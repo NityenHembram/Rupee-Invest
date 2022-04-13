@@ -1,13 +1,19 @@
 package com.amvlabs.rupeeinvest.adapters
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.amvlabs.rupeeinvest.R
+import com.amvlabs.rupeeinvest.dialogs.RequestLogInDialog
+import com.amvlabs.rupeeinvest.ui.ChartActivity
 
-class TopgainerAdapter(): RecyclerView.Adapter<TopgainerAdapter.ViewHolder>() {
+class TopgainerAdapter(private val context: Context, private val flag1:Boolean): RecyclerView.Adapter<TopgainerAdapter.ViewHolder>() {
 
     private var companyNameList = arrayListOf<String>("Adani Green Energy","Grasim Industries","SBI Life Insurance","ITC","JSW Steel")
     private var stockValue = arrayListOf<String>("2,321.85","1,771.25","1,160.45","267.80","59.447.18")
@@ -18,13 +24,27 @@ class TopgainerAdapter(): RecyclerView.Adapter<TopgainerAdapter.ViewHolder>() {
         viewType: Int
     ): TopgainerAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item,parent,false)
-        return ViewHolder(view)
+        return ViewHolder(view,flag1,context)
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, private val f:Boolean,var context: Context): RecyclerView.ViewHolder(itemView) ,View.OnClickListener{
         val companyName: TextView = itemView.findViewById<TextView>(R.id.company_name)
         val value: TextView = itemView.findViewById<TextView>(R.id.company_shareValue)
         val growth: TextView = itemView.findViewById<TextView>(R.id.company_growthValue)
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+
+            if(!f){
+                val dialog = RequestLogInDialog()
+                dialog.showDialog(context)
+            }else{
+                context.startActivity(Intent(context, ChartActivity::class.java))
+            }
+
+        }
     }
 
     override fun onBindViewHolder(holder: TopgainerAdapter.ViewHolder, position: Int) {

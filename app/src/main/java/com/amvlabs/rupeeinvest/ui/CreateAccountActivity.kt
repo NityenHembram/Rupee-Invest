@@ -67,7 +67,7 @@ class CreateAccountActivity : AppCompatActivity(), VerifyClickListener {
             override fun onCodeSent(code: String, token: PhoneAuthProvider.ForceResendingToken) {
                 verificationId = code
                 getToken = token
-                Log.d(TAG, "onCodeSent: ")
+                dialog.stopLoading()
                 showBottomDialog()
             }
         }
@@ -77,7 +77,7 @@ class CreateAccountActivity : AppCompatActivity(), VerifyClickListener {
 //        Create Account button
         bind.createBtn.setOnClickListener {
             phoneAuthentication()
-            Log.d(TAG, "createbtn click")
+            dialog.startLoading()
         }
 
 
@@ -221,20 +221,24 @@ class CreateAccountActivity : AppCompatActivity(), VerifyClickListener {
         auth.signInWithCredential(p0).addOnSuccessListener {
             val credential = EmailAuthProvider.getCredential(email, password)
             auth.currentUser!!.linkWithCredential(credential).addOnSuccessListener {
+                dialog.stopLoading()
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
+                dialog.stopLoading()
                 Log.d(TAG, "email:  $it")
                 Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
                 auth.currentUser!!.delete().addOnSuccessListener {
-
+                    dialog.stopLoading()
                 }.addOnFailureListener {
+                    dialog.stopLoading()
                     Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "delete: $it ")
                 }
             }
         }.addOnFailureListener {
+            dialog.stopLoading()
             Log.d(TAG, "linkedPhoneNumber: $it ")
             Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
         }

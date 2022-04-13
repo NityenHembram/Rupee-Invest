@@ -89,8 +89,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_account_balance_wallet_24"
-                        app:riv_corner_radius="10dp" />
+                        android:src="@drawable/ic_baseline_account_balance_wallet_24" />
                 </androidx.cardview.widget.CardView>
 
 
@@ -144,8 +143,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_fact_check_24"
-                        app:riv_corner_radius="10dp" />
+                        android:src="@drawable/ic_baseline_fact_check_24" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -201,8 +199,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_account_balance_24"
-                        app:riv_corner_radius="10dp" />
+                        android:src="@drawable/ic_baseline_account_balance_24" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -257,8 +254,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_card_giftcard_24"
-                        app:riv_corner_radius="10dp" />
+                        android:src="@drawable/ic_baseline_card_giftcard_24" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -313,9 +309,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_help_24"
-                        app:riv_corner_radius="10dp" />
-
+                        android:src="@drawable/ic_baseline_help_24" />
                 </androidx.cardview.widget.CardView>
 
 
@@ -369,8 +363,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_featured_play_list_24"
-                        app:riv_corner_radius="10dp" />
+                        android:src="@drawable/ic_baseline_featured_play_list_24" />
 
                 </androidx.cardview.widget.CardView>
 

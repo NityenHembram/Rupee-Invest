@@ -1,30 +1,71 @@
 <resources>
-    <string name="app_name">Rupee Invest</string>
-    <string name="get_started">Get Started</string>
-    <string name="create_account">Create Account</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="email">Email</string>
-    <string name="phone_number">Phone Number</string>
+
+    <string name="onboarding_slide1_title" translatable="false">Create an account</string>
+    <string name="onboarding_slide1_subtitle" translatable="false">Connect with people around the world</string>
+    <string name="onboarding_slide1_desc">User will be able to give you live, chat and meet
+        with people nearby.</string>
+
+    <string name="onboarding_slide2_title">Login to your account</string>
+    <string name="onboarding_slide2_subtitle">Let\'s build connection with new people</string>
+    <string name="onboarding_slide2_desc">Connect helps you locate the people around you who
+        are closest from your home.</string>
+
+    <string name="onboarding_slide3_title">Login to your account</string>
+    <string name="onboarding_slide3_subtitle">Feel the happiness</string>
+    <string name="onboarding_slide3_desc">User will be able to give you live, chat and meet
+        with people nearby.</string>
+
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="get_started">Get started</string>
+
+    <string name="sign_in">Sign In</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="already_have_an_account">Already have an account?</string>
-    <string name="log_in">Log In</string>
-    <string name="login">LOGIN</string>
-    <string name="don_t_have_an_account">Don\'t have an account?</string>
-    <string name="or_login_with">Or Login With</string>
-    <string name="create_an_account">Create an account</string>
-    <string name="please_wait">Please wait...</string>
-    <string name="firstSlideTxt">Bottoms in the investment world don\'t end with four-year lows; they end with 10- or 15-year lows.</string>
-    <string name="secSlidTxt">With a good perspective on history, we can have a better understanding of the past and present, and thus a clear vision of the future.</string>
-    <string name="thirdSlidTxt">Waiting helps you as an investor and a lot of people just can’t stand to wait. If you didn’t get the deferred-gratification gene, you’ve got to work very hard to overcome that.</string>
-    <string name="forthSlidTxt">We don\'t prognosticate macroeconomic factors, we\'re looking at our companies from a bottom-up perspective on their long-run prospects of returning.</string>
-    <string name="rupee">₹</string>
-    <string name="invest_STR">INVEST</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login">Login</string>
+    <string name="new_user">New User?</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="invalid_password">Invalid password</string>
+
+    <string name="home_screen_title">Home</string>
+    <string name="home_screen_text">Can\'t walk? then fly!</string>
+    <string name="previous">previous</string>
+    <string name="skip_txt">Skip</string>
 
 
-    <string name="clint_id">161831420462-uei6ve0bsuvmi9ubp9v5qhfib1i9stpm.apps.googleusercontent.com</string>
-    <string name="skip_txt">skip</string>
+
+
+
+
+
+
+
+
+
+
+        <string name="app_name">Rupee Invest</string>
+
+        <string name="create_account">Create Account</string>
+        <string name="first_name">First Name</string>
+        <string name="last_name">Last Name</string>
+        <string name="email">Email</string>
+        <string name="phone_number">Phone Number</string>
+
+        <string name="confirm_password">Confirm Password</string>
+        <string name="already_have_an_account">Already have an account?</string>
+        <string name="log_in">Log In</string>
+        <string name="don_t_have_an_account">Don\'t have an account?</string>
+        <string name="or_login_with">Or Login With</string>
+        <string name="create_an_account">Create an account</string>
+        <string name="please_wait">Please wait...</string>
+        <string name="firstSlideTxt">Bottoms in the investment world don\'t end with four-year lows; they end with 10- or 15-year lows.</string>
+        <string name="secSlidTxt">With a good perspective on history, we can have a better understanding of the past and present, and thus a clear vision of the future.</string>
+        <string name="thirdSlidTxt">Waiting helps you as an investor and a lot of people just can’t stand to wait. If you didn’t get the deferred-gratification gene, you’ve got to work very hard to overcome that.</string>
+        <string name="forthSlidTxt">We don\'t prognosticate macroeconomic factors, we\'re looking at our companies from a bottom-up perspective on their long-run prospects of returning.</string>
+        <string name="rupee">₹</string>
+        <string name="invest_STR">INVEST</string>
+
+
 </resources>

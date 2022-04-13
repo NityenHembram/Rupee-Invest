@@ -25,12 +25,15 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var auth:FirebaseAuth
 
+    private var flag = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(bind.root)
         setSupportActionBar(bind.toolbar)
 
+        flag = intent.getBooleanExtra(isSignIn,false)
 
         auth = FirebaseAuth.getInstance()
 
@@ -62,13 +65,14 @@ class HomeActivity : AppCompatActivity() {
                 else -> {false }
             }
         }
-
-
     }
 
     private fun replaceFragment(fragment: Fragment) {
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
+        val bundle = Bundle()
+        bundle.putBoolean(isSignIn,flag)
+        fragment.arguments = bundle
         transaction.replace(R.id.frameLayout, fragment)
         transaction.commit()
     }

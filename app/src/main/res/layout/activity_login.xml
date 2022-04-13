@@ -7,22 +7,33 @@
     tools:context=".ui.CreateAccountActivity">
 
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="655dp"
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="20dp"
         app:cardPreventCornerOverlap="true">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/loginSkip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/loginTxt"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                android:text="@string/skip_txt"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/loginTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
                 android:text="@string/login"
                 android:textAlignment="center"
@@ -35,7 +46,7 @@
                 android:id="@+id/loginCredential"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView"
+                android:layout_below="@+id/loginTxt"
                 android:layout_margin="12dp"
                 android:orientation="vertical">
 

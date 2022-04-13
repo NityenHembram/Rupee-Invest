@@ -8,9 +8,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import com.amvlabs.rupeeinvest.R
 import com.amvlabs.rupeeinvest.databinding.ActivityLoginBinding
@@ -26,17 +23,18 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlin.math.log
 
-
+const val isSignIn = "signIn"
 private const val TAG = "tag"
+
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var auth:FirebaseAuth
-    private lateinit var dialog:MyDialog
+    private lateinit var auth: FirebaseAuth
+    private lateinit var dialog: MyDialog
 
-    private lateinit var  googleSignClint:GoogleSignInClient
-    private lateinit var googleSignInAccount:GoogleSignInAccount
+    private lateinit var googleSignClint: GoogleSignInClient
+    private lateinit var googleSignInAccount: GoogleSignInAccount
 
-    private lateinit var bind:ActivityLoginBinding
+    private lateinit var bind: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityLoginBinding.inflate(layoutInflater)
@@ -51,8 +49,10 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
 
-        if(auth.currentUser != null){
-            startActivity(Intent(this,HomeActivity::class.java))
+        if (auth.currentUser != null) {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra(isSignIn, true)
+            startActivity(intent)
             finish()
         }
 
@@ -60,8 +60,18 @@ class LoginActivity : AppCompatActivity() {
         loginWithGoogle()
 
 
-        bind.createAccountBtn.setOnClickListener{
-            startActivity(Intent(this,CreateAccountActivity::class.java))
+        bind.loginSkip.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra(isSignIn,false)
+            startActivity(intent)
+            finish()
+        }
+
+
+        bind.createAccountBtn.setOnClickListener {
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            intent.putExtra(isSignIn, true)
+            startActivity(intent)
             finish()
         }
 
@@ -71,23 +81,22 @@ class LoginActivity : AppCompatActivity() {
 //        }
 
 
-
-        bind.loginPass.addTextChangedListener{
-            if(it!!.length <= 7 ){
+        bind.loginPass.addTextChangedListener {
+            if (it!!.length <= 7) {
                 bind.loginPassLayout.boxStrokeColor = Color.RED
                 bind.loginPassLayout.helperText = "Password must contain 8 Characters"
-            }else{
+            } else {
                 bind.loginPassLayout.boxStrokeColor = Color.BLACK
                 bind.loginPassLayout.helperText = ""
             }
         }
 
 
-        bind.loginEmail.addTextChangedListener{
-            if(it!!.contains("@") && it.endsWith(".com") || it.length == 10 ){
+        bind.loginEmail.addTextChangedListener {
+            if (it!!.contains("@") && it.endsWith(".com") || it.length == 10) {
                 bind.loginEmailLayout.boxStrokeColor = Color.BLACK
                 bind.loginEmailLayout.helperText = ""
-            }else{
+            } else {
                 bind.loginEmailLayout.boxStrokeColor = Color.RED
                 bind.loginEmailLayout.helperText = "Enter Valid Email"
             }
@@ -95,18 +104,16 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-        bind.loginBtn.setOnClickListener{
+        bind.loginBtn.setOnClickListener {
             dialog.startLoading()
             login()
         }
-        
-        
     }
 
-    private fun loginWithGoogle(){
-     val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-         .requestEmail().build()
-        googleSignClint = GoogleSignIn.getClient(this,gso)
+    private fun loginWithGoogle() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail().build()
+        googleSignClint = GoogleSignIn.getClient(this, gso)
 //        if(GoogleSignIn.getLastSignedInAccount(this) == null){
 //            googleSignInAccount = GoogleSignIn.getLastSignedInAccount(this)!!
 //        }
@@ -132,14 +139,14 @@ class LoginActivity : AppCompatActivity() {
         val e = bind.loginEmail.text.toString().trim()
         val p = bind.loginPass.text.toString().trim()
 
-        when{
-            TextUtils.isEmpty(e) ->{
+        when {
+            TextUtils.isEmpty(e) -> {
                 bind.loginEmailLayout.boxStrokeColor = Color.RED
                 bind.loginEmailLayout.helperText = "Email must not be empty"
                 dialog.stopLoading()
                 return
             }
-            TextUtils.isEmpty(p) ->{
+            TextUtils.isEmpty(p) -> {
                 bind.loginPassLayout.boxStrokeColor = Color.RED
                 bind.loginPassLayout.helperText = "Password must not be empty"
                 dialog.stopLoading()
@@ -147,36 +154,32 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        if(p.length < 8){
+        if (p.length < 8) {
             bind.loginPassLayout.helperText = "Password should be 8 character"
-        }else{
+        } else {
             val credential = EmailAuthProvider.getCredential(e, p)
             auth.signInWithCredential(credential).addOnSuccessListener {
                 dialog.stopLoading()
-                startActivity(Intent(this,HomeActivity::class.java))
-            }.addOnFailureListener{
-               Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra(isSignIn, true)
+                startActivity(intent)
+            }.addOnFailureListener {
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 dialog.stopLoading()
             }
         }
-
-
-
-
     }
-
 
     override fun onStart() {
         super.onStart()
 //        Log.d(TAG, "onStart: $googleSignInAccount")
-        if(auth.currentUser != null){
-            startActivity(Intent(this,HomeActivity::class.java))
+        if (auth.currentUser != null) {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra(isSignIn, true)
+            startActivity(intent)
             finish()
         }
     }
-
-
-
 
 
 }

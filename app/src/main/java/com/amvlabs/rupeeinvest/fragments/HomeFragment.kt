@@ -1,5 +1,6 @@
 package com.amvlabs.rupeeinvest.fragments
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.amvlabs.rupeeinvest.R
 import com.amvlabs.rupeeinvest.adapters.*
 import com.amvlabs.rupeeinvest.decoration.PageIndicatorDecoration
+import com.amvlabs.rupeeinvest.ui.isSignIn
 
 class HomeFragment : Fragment() {
 
@@ -20,21 +22,18 @@ class HomeFragment : Fragment() {
     private lateinit var loserRecyclerView: RecyclerView
     private lateinit var marketAdapter:MarketIndicesAdapter
 
-
-
     lateinit var bannerRecyclerView: RecyclerView
 
-    private lateinit var dotsLout: LinearLayout
+    private lateinit var dotsLout:LinearLayout
     private lateinit var dots:Array<TextView?>
 
+    private var isSignInFlag:Boolean =false
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
+        isSignInFlag = requireActivity().intent.getBooleanExtra(isSignIn,false)
     }
 
     override fun onCreateView(
@@ -45,8 +44,6 @@ class HomeFragment : Fragment() {
         topGainerRecyclerView = v.findViewById(R.id.topGainerRecyclerView)
         stockNewsRecyclerView = v.findViewById(R.id.stockNewsRecyclerView)
         loserRecyclerView = v.findViewById(R.id.loserRecyclerView)
-
-
         bannerRecyclerView = v.findViewById(R.id.banner_recyclerView)
 
         return v
@@ -56,16 +53,16 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         marketRecyclerView.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
-        marketRecyclerView.adapter = MarketIndicesAdapter()
+        marketRecyclerView.adapter = MarketIndicesAdapter(requireActivity(),isSignInFlag)
 
         stockNewsRecyclerView.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
-        stockNewsRecyclerView.adapter = StockAdapter()
+        stockNewsRecyclerView.adapter = StockAdapter(requireActivity(),isSignInFlag)
 
         topGainerRecyclerView.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
-        topGainerRecyclerView.adapter = TopgainerAdapter()
+        topGainerRecyclerView.adapter = TopgainerAdapter(requireActivity(),isSignInFlag)
 
         loserRecyclerView.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
-        loserRecyclerView.adapter = TopLoserAdapter()
+        loserRecyclerView.adapter = TopLoserAdapter(requireActivity(),isSignInFlag)
 
         bannerRecyclerView.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
         bannerRecyclerView.adapter = BannerAdapter()
