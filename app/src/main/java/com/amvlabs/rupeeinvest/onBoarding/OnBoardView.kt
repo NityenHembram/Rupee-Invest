@@ -1,5 +1,6 @@
 package com.amvlabs.rupeeinvest.onBoarding
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
@@ -9,11 +10,11 @@ import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.amvlabs.rupeeinvest.R
 import com.amvlabs.rupeeinvest.adapters.OnBoardingPagerAdapter
-import com.omni.onboardingscreen.domain.OnBoardingPrefManager
-import kotlinx.android.synthetic.main.activity_main.view.*
 import com.amvlabs.rupeeinvest.entity.OnBoardingPage
 import com.amvlabs.rupeeinvest.ui.LoginActivity
+import com.omni.onboardingscreen.domain.OnBoardingPrefManager
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+import kotlinx.android.synthetic.main.activity_main.view.*
 import setParallaxTransformation
 
 
@@ -50,6 +51,8 @@ constructor(
         startBtn.setOnClickListener{
             setFirstTimeLaunchToFalse()
             context.startActivity(Intent(context,LoginActivity::class.java))
+            val activity = context as Activity
+            activity.finish()
         }
     }
 

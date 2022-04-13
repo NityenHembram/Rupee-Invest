@@ -10,36 +10,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RupeeInvest">
         <activity
-            android:screenOrientation="landscape"
             android:name=".ui.ChartActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ui.HomeActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.HomeFragment"></activity>
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.HomeFragment" />
         <activity
             android:name=".ui.VerifyActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.CreateAccountActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".ui.LoginActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".WelcomeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:noHistory="true"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".onBoarding.OnBoardingActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
