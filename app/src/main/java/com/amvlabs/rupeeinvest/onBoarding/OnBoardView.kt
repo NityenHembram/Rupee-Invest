@@ -3,10 +3,12 @@ package com.amvlabs.rupeeinvest.onBoarding
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
+import com.amvlabs.rupeeinvest.ActivityFinish
 import com.amvlabs.rupeeinvest.R
 import com.amvlabs.rupeeinvest.adapters.OnBoardingPagerAdapter
 import com.omni.onboardingscreen.domain.OnBoardingPrefManager
@@ -27,34 +29,42 @@ constructor(
     defStyleRes: Int = 0
 ) : FrameLayout(context, attr, defStyleAttr, defStyleRes) {
 
+
     val c = context
     private val numberOfPages by lazy { OnBoardingPage.values().size }
     private val prefManager: OnBoardingPrefManager
+    private val finish = ActivityFinish()
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.activity_main, this, true)
         setUpSlider(view)
         addingButtonsClickListeners()
        prefManager = OnBoardingPrefManager(view.context)
-        if(!prefManager.isFirstTimeLaunch){
+
+
+        Log.d("car", "firstTime: ${prefManager.isFirstTimeLaunch} ")
+        if(prefManager.isFirstTimeLaunch){
             context.startActivity(Intent(context,LoginActivity::class.java))
+            finish.finishActivity(context as OnBoardingActivity)
         }
     }
+
 
     private fun addingButtonsClickListeners() {
         nextBtn.setOnClickListener{ navigateToNextSlide() }
         skipBtn.setOnClickListener{
-            setFirstTimeLaunchToFalse()
+            setFirstTimeLaunchToTrue()
             context.startActivity(Intent(context,LoginActivity::class.java))
-
+            finish.finishActivity(context as OnBoardingActivity)
         }
         startBtn.setOnClickListener{
-            setFirstTimeLaunchToFalse()
+            setFirstTimeLaunchToTrue()
             context.startActivity(Intent(context,LoginActivity::class.java))
+            finish.finishActivity(context as OnBoardingActivity)
         }
     }
 
-    private fun setFirstTimeLaunchToFalse() {
-        prefManager.isFirstTimeLaunch = false
+    private fun setFirstTimeLaunchToTrue() {
+        prefManager.isFirstTimeLaunch = true
     }
 
     private fun navigateToNextSlide() {
@@ -92,5 +102,7 @@ constructor(
     }
 
 }
+
+
 
 
