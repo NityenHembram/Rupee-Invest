@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+        Nityen Hembram
 
         sharePreferences = getSharedPreferences("myPreferences", MODE_PRIVATE)
         val edit = sharePreferences.edit()
