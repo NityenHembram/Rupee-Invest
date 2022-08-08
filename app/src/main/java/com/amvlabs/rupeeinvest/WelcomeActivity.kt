@@ -11,7 +11,8 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-
+        
+        Nityen Hembram
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             startActivity(Intent(this,OnBoardingActivity::class.java))
             finish()
