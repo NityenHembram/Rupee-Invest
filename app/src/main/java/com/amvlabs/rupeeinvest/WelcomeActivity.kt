@@ -5,16 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.amvlabs.rupeeinvest.onBoarding.OnBoardingActivity
 
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-        
-        Nityen Hembram
+
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             startActivity(Intent(this,OnBoardingActivity::class.java))
+            val a = "Nityen"
             finish()
         },1000)
 
